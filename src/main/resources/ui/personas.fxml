@@ -20,8 +20,8 @@
         <Menu mnemonicParsing="false" text="File">
           <items>
             <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem fx:id="miImportar" mnemonicParsing="false" onAction="#importar" text="Unspecified Action" />
-                  <MenuItem fx:id="miExportar" mnemonicParsing="false" onAction="#exportar" text="Unspecified Action" />
+                  <MenuItem fx:id="miImportar" mnemonicParsing="false" onAction="#importar" text="Importar" />
+                  <MenuItem fx:id="miExportar" mnemonicParsing="false" onAction="#exportar" text="Exportar" />
             <MenuItem fx:id="miQuit" mnemonicParsing="false" onAction="#desconectar" text="Quit" />
           </items>
         </Menu>

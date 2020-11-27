@@ -1,15 +1,11 @@
 package com.sanvalero.pruebamongo;
 
-import com.mongodb.BasicDBObject;
-import com.mongodb.DBCollection;
 import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.sanvalero.pruebamongo.domain.Persona;
 import org.bson.Document;
 
-import javax.swing.text.AbstractDocument;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -45,9 +41,20 @@ public class PersonaDAO {
             persona = new Persona();
             persona.setNombre(documento.getString("nombre"));
             persona.setApellidos(documento.getString("apellidos"));
-            //persona.setEdad(documento.getInteger("edad"));
+            persona.setEdad(documento.getInteger("edad"));
             listaPersonas.add(persona);
         }
         return listaPersonas;
+    }
+
+    public void modificar(Persona persona) {
+        db.getCollection("persona").replaceOne(new Document("nombre", persona.getNombreAnterior()), new Document()
+                .append("nombre", persona.getNombre())
+                .append("apellidos", persona.getApellidos())
+                .append("edad", persona.getEdad()));
+    }
+
+    public void eliminar(Persona persona) {
+        db.getCollection("persona").deleteOne(new Document("nombre", persona.getNombre()));
     }
 }
